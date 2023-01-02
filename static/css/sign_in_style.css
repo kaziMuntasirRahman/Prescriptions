@@ -1,0 +1,93 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(https://img.freepik.com/premium-photo/doctor-writing-medical-prescription-patient_324489-162.jpg?w=2000);
+    background-position: absolute;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.block1{
+    width: 400px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    background-color: black;
+    color: white;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.block1 img{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 150px;
+    top: -50px;
+    border-radius: 50%;
+}
+/* ----------------------------------------------- */
+.block1 h2{
+    margin: 0;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 30px;
+    color:rgb(0, 255, 30);
+}
+
+.block1 p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.block1 input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.block1 input[type="number"],select, input[type="Password"], input[type="text"],input[type="email"],input[type="date"]{
+    border: none;
+    border-bottom: 1px solid white;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: rgb(253, 253, 253);
+    font-size: 16px;
+}
+select{
+    width: 100%;
+    margin-bottom: 20px;
+}
+select option{
+    background: black;
+}
+
+.block1 input[type="submit"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: orangered;
+    color: white;
+    font-size: 18px;
+    border-radius: 50px;
+}
+
+.block1 input[type="Submit"]:hover{
+    color: black;
+    background-color: rgb(188, 255, 4);
+    cursor: pointer;
+}
+
+.block1 a{
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 20px;
+    color:azure;
+}
+
+.block1 a:hover{
+    color:rgb(188, 255, 4);
+}

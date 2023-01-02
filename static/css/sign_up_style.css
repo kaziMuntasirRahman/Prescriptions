@@ -1,0 +1,13 @@
+
+.block1{
+  width: 400px;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+}

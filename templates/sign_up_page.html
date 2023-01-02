@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    {% load static %}
+    <link rel="icon" href="{% static './img2/patient2.png' %}">
+    <link rel="stylesheet" href="{% static './css/sign_in_style.css' %}">
+    <link rel="stylesheet" href="{% static './css/sign_up_style.css' %}">
+</head>
+<body>
+    <div class="block1">
+        <img src="{% static './img/profile.png' %}" alt="Profile Icon">
+        <h2>Sign Up Here</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% if form.non_field_errors%}
+            <div style="margin-top: 1rem;margin-bottom: 1rem;">
+                <ul>
+                    {% for error in form.non_field_errors %}
+                        <li style="color:crimson"><strong>{{ error|escape }}</strong></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <p>Name</p>
+            <input type="text" placeholder="Enter Paitent Name" name="name">
+            {% if form.name.errors%}
+            <div style="margin-top: 1rem;margin-bottom: 1rem;">
+                <ul>
+                    {% for error in form.name.errors %}
+                        <li style="color:crimson"><strong>{{ error|escape }}</strong></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <p>NID or Birth Certificate No</p>
+            <input type="number" placeholder="Enter Patient NID or Birth Certificate No" name="nid">
+            {% if form.nid.errors%}
+            <div style="margin-top: 1rem;margin-bottom: 1rem;">
+                <ul>
+                    {% for error in form.nid.errors %}
+                        <li style="color:crimson"><strong>{{ error|escape }}</strong></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <p>Date of Birth</p>
+            <input type="date" placeholder="Date of Birth" name="dob">
+            {% if form.dob.errors%}
+            <div style="margin-top: 1rem;margin-bottom: 1rem;">
+                <ul>
+                    {% for error in form.dob.errors %}
+                        <li style="color:crimson"><strong>{{ error|escape }}</strong></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <p>Gender</p>
+            <select name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            {% if form.gender.errors%}
+            <div style="margin-top: 1rem;margin-bottom: 1rem;">
+                <ul>
+                    {% for error in form.gender.errors %}
+                        <li style="color:crimson"><strong>{{ error|escape }}</strong></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <p>Email</p>
+            <input type="email" placeholder="Enter your email" name="email">
+            {% if form.email.errors%}
+            <div style="margin-top: 1rem;margin-bottom: 1rem;">
+                <ul>
+                    {% for error in form.email.errors %}
+                        <li style="color:crimson"><strong>{{ error|escape }}</strong></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <p>Password</p>
+            <input type="password" placeholder="Enter a new Password" name="password1">
+            {% if form.name.password1%}
+            <div style="margin-top: 1rem;margin-bottom: 1rem;">
+                <ul>
+                    {% for error in form.password1.errors %}
+                        <li style="color:crimson"><strong>{{ error|escape }}</strong></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <p>Confirm Password</p>
+            <input type="password" placeholder="Confirm Your Password" name="password2">
+            {% if form.password2.errors%}
+            <div style="margin-top: 1rem;margin-bottom: 1rem;">
+                <ul>
+                    {% for error in form.password2.errors %}
+                        <li style="color:crimson"><strong>{{ error|escape }}</strong></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <input type="submit" value="Sign Up">
+            <br>
+            <a href="{% url 'login' %}">Already have an account? Sign in Here.</a>
+        </form>
+    </div>
+
+</body>
+</html>

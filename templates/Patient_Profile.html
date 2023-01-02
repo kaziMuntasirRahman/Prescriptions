@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+  <link rel="stylesheet" href="{% static './css/Patient_profile.css' %}">
+</head>
+<body>
+  <nav>
+    <span Style="margin-right:1rem"><a href="/">Home</a></span>
+    <span Style="margin-right:1rem"><a href=" {% url 'logout' %}">Logout</a></span>
+    {% if is_my_profile %}
+    <span Style="margin-right:1rem"><a href=" {% url 'upload_prescription' %}">Upload Prescription</a></span>
+    {% endif %}
+  </nav>
+
+<h1>Patient info</h1>
+
+<table>
+  <tr>
+    <td>Name</td>
+    <td>{{user.name}}</td>
+  </tr>
+  {% comment %} <tr>
+    <td>Age</td>
+    <td>50</td>
+  </tr> {% endcomment %}
+  <tr>
+    <td>Date of Birth</td>
+    <td>{{user.dob}}</td>
+  </tr>
+  <tr>
+    <td>Gender</td>
+    <td>{{user.gender}}</td>
+  </tr>
+  {% comment %} <tr>
+    <td>Address</td>
+    <td>JK Palace, Motaher Hosen Sarak, Kamlapur, Faridpur.</td>
+  </tr> {% endcomment %}
+  
+</table>
+
+<h2>Prescription List</h2>
+
+<h4>Resize the browser window to see the effect.</h4>
+{% for prescription in prescriptions %}
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank">
+      <img src="{{prescription.image.url}}" alt="Cinque Terre" width="600" height="400">
+    </a>
+    <div class="desc">Title: {{prescription.title}}</div>
+    <div class="desc">Prescribed by: {{prescription.prescribed_by}}</div>
+  </div>
+</div>
+{% endfor %}
+
+
+
+
+<div class="clearfix"></div>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="CodeHim">
+    <title>Prescriptions</title>
+    {% load static %}
+    <link rel="shortcut icon" href=" {% static '.\img2\patient2.png' %} " type="image/x-icon">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href=" {% static './css/style.css' %} ">
+	<!-- Demo CSS (No need to include it into your project) -->
+	<link rel="stylesheet" href="{% static 'css/demo.css' %}">
+  
+  </head>
+  <body>
+ <header class="intro">
+ <h1>Prescription | Doctor Version</h1>
+ <p>An Easy to connect with Doctor & Patient</p>
+ </div>
+ </header>
+  
+      
+ <main>
+     <!-- Start DEMO HTML (Use the following code into your project)-->
+   <div class="container">
+    <header class="header">
+      <h3 class="header-logo">Patients</h3>
+      
+      <nav class="header-nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href=" {% url 'logout' %}">Logout</a></li>
+          <li><a href="#0"></a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <div class="patients">
+      {% for patient in patients %}
+        <div class="patient">
+          {% comment %} <div class="patient-image">
+            <img src="./img2/patient1.png" alt="John Cena">
+          </div> {% endcomment %}
+          <div class="patient-name"><span>patient ID:</span> {{patient.id}}</div>
+          <div class="patient-name"><span>patient Name:</span> {{patient.name}}</div>
+          <div class="patient-description"><span>Date of Birth:</span> {{patient.dob}}</div>
+          <div class="patient-add-to-cart">
+            <a href=" {% url 'patient' pk=patient.id %}" class="button see-more">More Details</a>
+          </div>                    
+        </div>
+      {% endfor %}
+</div>  
+     <!-- END EDMO HTML (Happy Coding!)-->
+ </main>
+ 
+      
+  <footer class="credit">Author: Kazi Muntasir Rahman, Sohel Matubbar & Hakim Khan - Created by: <a title="Awesome web design code & scripts" href="github.com/cse07/prescriptions" target="_blank">SHR Group</a></footer>
+  
+      <!-- Script Js -->
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+      
+  </body>
+</html>
