@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription</title>
+    <style>
+        .p-3 {
+            padding: 1rem;
+        }
+
+        .p-2 {
+            padding: 5px;
+        }
+
+        nav {
+            padding: 1.5rem;
+            background: rgb(203, 203, 203);
+        }
+
+        nav a {
+            color: rgb(52, 52, 52);
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <span Style="margin-right:1rem"><a href="/">Home</a></span>
+        <span Style="margin-right:1rem"><a href=" {% url 'logout' %}">Logout</a></span>
+    </nav>
+    <div class="p-3">
+        <div class="p2">
+            <h4>Title: </h4> <span>{{prescription.title}}</span>
+        </div>
+    </div>
+    <div class="p-3">
+        <div class="p2">
+            <h4>Prescribed By: </h4> <span>{{prescription.prescribed_by}}</span>
+        </div>
+    </div>
+    <div class="p-3">
+        <div class="p2">
+            <img src="{{prescription.image.url}}" alt="" style="max-width: 95%;height: auto;">
+        </div>
+    </div>
+</body>
+
+</html>

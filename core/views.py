@@ -5,7 +5,7 @@ from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib.auth import get_user_model
-from .forms import SignUpForm
+from .forms import SignUpForm, PrescriptionForm
 from .models import User, Prescription
 # Home page view
 class HomepageView(LoginRequiredMixin,View):
@@ -95,7 +95,7 @@ class OtherPatientProfileView(LoginRequiredMixin,DetailView):
   context_object_name = "user"
   def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
-      context["prescriptions"] = Prescription.objects.filter(user=kwargs.get("pk")).order_by("-uploaded_at")
+      context["prescriptions"] = Prescription.objects.filter(user=kwargs.get("object")).order_by("-uploaded_at")
       return context
 
 class UploadPrescription(LoginRequiredMixin,View):
@@ -104,12 +104,16 @@ class UploadPrescription(LoginRequiredMixin,View):
   template_name = "prescription_form.html"
 
   def get(self,request,*args, **kwargs):
-    return render(request,self.template_name)
+    form = PrescriptionForm()
+    return render(request,self.template_name,{"form":form})
 
   def post(self,request,*args, **kwargs):
-    Prescription.objects.create(user=request.user,title=request.POST.get("title"),prescribed_by=request.POST.get("prescribed_by"),image=request.POST.get("image"))
+    Prescription.objects.create(user=request.user,title=request.POST.get("title"),prescribed_by=request.POST.get("prescribed_by"),image=request.FILES.get("image"))
     return redirect(reverse("profile"))
-
-  
-
-# Create your views here.
+# Single prescription view
+class PrescriptionView(LoginRequiredMixin,DetailView):
+  login_url = "/account/login"
+  redirect_field_name = "next"
+  template_name = "prescription.html"
+  model = Prescription
+  context_object_name = "prescription"

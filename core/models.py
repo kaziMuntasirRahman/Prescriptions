@@ -66,7 +66,7 @@ class Prescription(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   title = models.CharField(max_length=200)
   prescribed_by = models.CharField(max_length=200)
-  image = models.ImageField( upload_to="./image/prescription")
+  image = models.ImageField( upload_to="image/prescription")
   uploaded_at = models.DateTimeField(auto_now_add=True) 
 
 # Create your models here.
